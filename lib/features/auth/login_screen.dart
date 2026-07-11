@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,139 +12,149 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  bool _obscurePassword = true;
+  bool obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0F0F0F),
+      backgroundColor: const Color(0xff090909),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: 28),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 30,
+              vertical: 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+
                 const Icon(
-                  Icons.movie_creation_outlined,
-                  color: Colors.red,
-                  size: 80,
+                  Icons.play_circle_fill_rounded,
+                  color: Color(0xff8B5CF6),
+                  size: 70,
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 25),
 
-                const Text(
+                GradientText(
                   "IFFARIX",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 42,
+                  style: const TextStyle(
+                    fontSize: 46,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 4,
+                    letterSpacing: 3,
                   ),
+                  colors: const [
+                    Color(0xffFFD54F),
+                    Color(0xffF4C430),
+                    Color(0xff8B5CF6),
+                  ],
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
 
                 const Text(
-                  "Unlimited Movies, TV Shows & More",
+                  "Unlimited Entertainment",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white70,
-                    fontSize: 16,
+                    fontSize: 15,
+                    letterSpacing: 1,
                   ),
                 ),
 
-                const SizedBox(height: 50),
+                const SizedBox(height: 45),
 
                 TextField(
                   controller: emailController,
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: "Email Address",
-                    hintStyle: const TextStyle(color: Colors.white54),
+                    hintStyle: const TextStyle(
+                      color: Colors.white54,
+                    ),
                     prefixIcon: const Icon(
                       Icons.email_outlined,
                       color: Colors.white70,
                     ),
                     filled: true,
-                    fillColor: const Color(0xFF1E1E1E),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(
-                        color: Colors.red,
-                        width: 2,
-                      ),
+                    fillColor: const Color(0xff1B1B1B),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
                 ),
 
                 const SizedBox(height: 20),
-
                 TextField(
                   controller: passwordController,
-                  obscureText: _obscurePassword,
+                  obscureText: obscurePassword,
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: "Password",
-                    hintStyle: const TextStyle(color: Colors.white54),
+                    hintStyle: const TextStyle(
+                      color: Colors.white54,
+                    ),
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: Colors.white70,
                     ),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscurePassword
+                        obscurePassword
                             ? Icons.visibility_off
                             : Icons.visibility,
                         color: Colors.white70,
                       ),
                       onPressed: () {
                         setState(() {
-                          _obscurePassword = !_obscurePassword;
+                          obscurePassword = !obscurePassword;
                         });
                       },
                     ),
                     filled: true,
-                    fillColor: const Color(0xFF1E1E1E),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide.none,
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: const BorderSide(
-                        color: Colors.red,
-                        width: 2,
-                      ),
+                    fillColor: const Color(0xff1B1B1B),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
                   ),
                 ),
 
                 const SizedBox(height: 30),
 
-                SizedBox(
-                  height: 55,
+                Container(
+                  height: 56,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color(0xffFFD54F),
+                        Color(0xff8B5CF6),
+                      ],
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Color(0x668B5CF6),
+                        blurRadius: 18,
+                        spreadRadius: 1,
+                      ),
+                    ],
+                  ),
                   child: ElevatedButton(
                     onPressed: () {
-                      if (emailController.text.trim().isEmpty ||
-                          passwordController.text.trim().isEmpty) {
+                      if (emailController.text.isEmpty ||
+                          passwordController.text.isEmpty) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            backgroundColor: Colors.red,
                             content: Text(
-                              "Please enter your email and password",
+                              "Please enter email & password",
                             ),
                           ),
                         );
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            backgroundColor: Colors.green,
                             content: Text(
                               "Login Successful",
                             ),
@@ -152,11 +163,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                      foregroundColor: Colors.white,
-                      elevation: 8,
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
+                        borderRadius: BorderRadius.circular(15),
                       ),
                     ),
                     child: const Text(
@@ -164,13 +174,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        letterSpacing: 1,
+                        letterSpacing: 2,
+                        color: Colors.white,
                       ),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 18),
 
                 Align(
                   alignment: Alignment.centerRight,
@@ -180,14 +191,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       "Forgot Password?",
                       style: TextStyle(
                         color: Colors.white70,
-                        fontSize: 15,
                       ),
                     ),
                   ),
                 ),
 
                 const SizedBox(height: 8),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -202,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: const Text(
                         "Sign Up",
                         style: TextStyle(
-                          color: Colors.red,
+                          color: Color(0xff8B5CF6),
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -212,32 +221,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 const SizedBox(height: 25),
 
-                const Divider(
-                  color: Colors.white24,
-                ),
-
-                const SizedBox(height: 20),
-
-                const Text(
-                  "Version 1.0",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white38,
-                    fontSize: 12,
+                const Center(
+                  child: Text(
+                    "Version 1.0",
+                    style: TextStyle(
+                      color: Colors.white38,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
-                ],
+              ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    super.dispose();
   }
 }
