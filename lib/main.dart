@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/splash/splash.screen.dart';
+import 'features/splash/splash_screen.dart';
 
 void main() {
   runApp(const StreamXApp());
