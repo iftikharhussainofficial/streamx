@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'widgets/hero_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,9 +21,9 @@ class HomeScreen extends StatelessWidget {
             color: Color(0xFFFFD369),
           ),
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.only(right: 15),
+            padding: EdgeInsets.only(right: 15),
             child: CircleAvatar(
               backgroundColor: Colors.deepPurple,
               child: Icon(
@@ -37,31 +38,8 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         children: [
 
-          // Featured Banner
-          Container(
-            margin: const EdgeInsets.all(16),
-            height: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: const LinearGradient(
-                colors: [
-                  Color(0xFFFFD369),
-                  Color(0xFF8B5CF6),
-                ],
-              ),
-            ),
-            child: const Center(
-              child: Text(
-                "WATCH ANYTHING\nANYTIME",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
+          /// Premium Hero Banner
+          const HeroBanner(),
 
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
@@ -159,7 +137,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF111111),
         selectedItemColor: const Color(0xFFFFD369),
         unselectedItemColor: Colors.grey,
-
+        type: BottomNavigationBarType.fixed,
         items: const [
 
           BottomNavigationBarItem(
