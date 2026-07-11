@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../home/home_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -13,6 +15,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
 
   bool obscurePassword = true;
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-
                 const Icon(
                   Icons.play_circle_fill_rounded,
                   color: Color(0xff8B5CF6),
@@ -71,9 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: "Email Address",
-                    hintStyle: const TextStyle(
-                      color: Colors.white54,
-                    ),
+                    hintStyle: const TextStyle(color: Colors.white54),
                     prefixIcon: const Icon(
                       Icons.email_outlined,
                       color: Colors.white70,
@@ -87,15 +93,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 const SizedBox(height: 20),
+
                 TextField(
                   controller: passwordController,
                   obscureText: obscurePassword,
                   style: const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     hintText: "Password",
-                    hintStyle: const TextStyle(
-                      color: Colors.white54,
-                    ),
+                    hintStyle: const TextStyle(color: Colors.white54),
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: Colors.white70,
@@ -153,11 +158,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "Login Successful",
-                            ),
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
                           ),
                         );
                       }
@@ -197,6 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 const SizedBox(height: 8),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
