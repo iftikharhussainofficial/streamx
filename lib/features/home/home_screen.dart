@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'widgets/hero_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,10 +25,7 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.only(right: 15),
             child: CircleAvatar(
               backgroundColor: Colors.deepPurple,
-              child: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
+              child: Icon(Icons.person, color: Colors.white),
             ),
           ),
         ],
@@ -38,16 +34,33 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         children: [
 
-          /// Premium Hero Banner
-          const HeroBanner(),
+          // TEMP TEST BANNER
+          Container(
+            height: 250,
+            margin: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Center(
+              child: Text(
+                "Hero Banner Working",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
 
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               "Trending Now",
               style: TextStyle(
-                fontSize: 22,
                 color: Colors.white,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -60,7 +73,7 @@ class HomeScreen extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
-              itemBuilder: (context, index) {
+              itemBuilder: (_, index) {
                 return Container(
                   width: 120,
                   margin: const EdgeInsets.only(left: 16),
@@ -94,8 +107,8 @@ class HomeScreen extends StatelessWidget {
             child: Text(
               "Continue Watching",
               style: TextStyle(
-                fontSize: 22,
                 color: Colors.white,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -108,20 +121,18 @@ class HomeScreen extends StatelessWidget {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
-              itemBuilder: (context, index) {
+              itemBuilder: (_, index) {
                 return Container(
                   width: 120,
                   margin: const EdgeInsets.only(left: 16),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
                     color: Colors.grey.shade900,
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
                     child: Text(
                       "Episode ${index + 1}",
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ),
                 );
@@ -139,26 +150,10 @@ class HomeScreen extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         items: const [
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.download),
-            label: "Downloads",
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(icon: Icon(Icons.download), label: "Downloads"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),
     );
