@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/custom_app_bar.dart';
 import 'widgets/hero_banner.dart';
 import 'widgets/movie_row.dart';
 import 'widgets/section_title.dart';
@@ -9,67 +10,49 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final movies = [
+      "The Last Kingdom",
+      "Dark Horizon",
+      "Shadow Hunter",
+      "Lost Island",
+      "Galaxy War",
+      "Red Zone",
+      "Night Hunter",
+      "Avengers",
+      "Batman",
+      "Superman",
+    ];
+
     return Scaffold(
       backgroundColor: const Color(0xFF090909),
 
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: const Text(
-          "IFFARIX",
-          style: TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-            letterSpacing: 2,
-            color: Color(0xFFFFD369),
-          ),
-        ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: CircleAvatar(
-              backgroundColor: Colors.deepPurple,
-              child: Icon(
-                Icons.person,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(),
 
       body: ListView(
-        children: const [
+        children: [
+          const HeroBanner(),
 
-          HeroBanner(),
+          const SizedBox(height: 25),
 
-          SectionTitle(title: "Trending Now"),
+          const SectionTitle(title: "Trending Now"),
 
-          MovieRow(
-            movies: [
-              "Movie 1",
-              "Movie 2",
-              "Movie 3",
-              "Movie 4",
-              "Movie 5",
-            ],
-          ),
-
-          SizedBox(height: 20),
-
-          SectionTitle(title: "Continue Watching"),
+          const SizedBox(height: 15),
 
           MovieRow(
-            movies: [
-              "Episode 1",
-              "Episode 2",
-              "Episode 3",
-              "Episode 4",
-              "Episode 5",
-            ],
+            movies: movies,
           ),
 
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
+
+          const SectionTitle(title: "Continue Watching"),
+
+          const SizedBox(height: 15),
+
+          MovieRow(
+            movies: movies,
+          ),
+
+          const SizedBox(height: 30),
         ],
       ),
 
