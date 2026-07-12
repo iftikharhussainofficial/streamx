@@ -6,7 +6,7 @@ class HeroBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 320,
+      height: 460,
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(25),
@@ -50,7 +50,7 @@ class HeroBanner extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
-                height: 1.0,
+                height: 1,
               ),
             ),
 
@@ -75,66 +75,65 @@ class HeroBanner extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 25),
+            const SizedBox(height: 20),
 
-            Row(
+            Wrap(
+              spacing: 12,
+              runSpacing: 12,
               children: [
-                ElevatedButton.icon(
+                ElevatedButton(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.play_arrow,
-                    color: Colors.black,
-                  ),
-                  label: const Text(
-                    "Play",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
+                      horizontal: 22,
                       vertical: 15,
                     ),
                   ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.play_arrow),
+                      SizedBox(width: 8),
+                      Text(
+                        "Play",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
                 ),
 
-                const SizedBox(width: 12),
-
-                OutlinedButton.icon(
+                OutlinedButton(
                   onPressed: () {},
-                  icon: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                  label: const Text(
-                    "My List",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(
-                      color: Colors.white,
-                    ),
+                    side: const BorderSide(color: Colors.white),
+                    foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 15,
                     ),
                   ),
+                  child: const Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.add),
+                      SizedBox(width: 8),
+                      Text("My List"),
+                    ],
+                  ),
                 ),
               ],
             ),
 
-            const SizedBox(height: 15),
+            const SizedBox(height: 18),
 
             const Row(
               children: [
                 Icon(
                   Icons.star,
                   color: Colors.amber,
+                  size: 18,
                 ),
                 SizedBox(width: 6),
                 Text(
@@ -153,9 +152,7 @@ class HeroBanner extends StatelessWidget {
                 SizedBox(width: 6),
                 Text(
                   "2h 18m",
-                  style: TextStyle(
-                    color: Colors.white70,
-                  ),
+                  style: TextStyle(color: Colors.white70),
                 ),
               ],
             ),

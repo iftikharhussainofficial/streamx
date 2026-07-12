@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/hero_banner.dart';
+import 'widgets/movie_row.dart';
+import 'widgets/section_title.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -25,122 +29,47 @@ class HomeScreen extends StatelessWidget {
             padding: EdgeInsets.only(right: 15),
             child: CircleAvatar(
               backgroundColor: Colors.deepPurple,
-              child: Icon(Icons.person, color: Colors.white),
+              child: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
             ),
           ),
         ],
       ),
 
       body: ListView(
-        children: [
+        children: const [
 
-          // TEMP TEST BANNER
-          Container(
-            height: 250,
-            margin: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Center(
-              child: Text(
-                "Hero Banner Working",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+          HeroBanner(),
+
+          SectionTitle(title: "Trending Now"),
+
+          MovieRow(
+            movies: [
+              "Movie 1",
+              "Movie 2",
+              "Movie 3",
+              "Movie 4",
+              "Movie 5",
+            ],
           ),
 
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              "Trending Now",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+          SizedBox(height: 20),
+
+          SectionTitle(title: "Continue Watching"),
+
+          MovieRow(
+            movies: [
+              "Episode 1",
+              "Episode 2",
+              "Episode 3",
+              "Episode 4",
+              "Episode 5",
+            ],
           ),
 
-          const SizedBox(height: 15),
-
-          SizedBox(
-            height: 170,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (_, index) {
-                return Container(
-                  width: 120,
-                  margin: const EdgeInsets.only(left: 16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.deepPurple.shade400,
-                        Colors.deepPurple.shade900,
-                      ],
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Movie ${index + 1}",
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-
-          const SizedBox(height: 30),
-
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Text(
-              "Continue Watching",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-
-          const SizedBox(height: 15),
-
-          SizedBox(
-            height: 170,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (_, index) {
-                return Container(
-                  width: 120,
-                  margin: const EdgeInsets.only(left: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade900,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Episode ${index + 1}",
-                      style: const TextStyle(color: Colors.white),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-
-          const SizedBox(height: 30),
+          SizedBox(height: 30),
         ],
       ),
 
@@ -149,11 +78,24 @@ class HomeScreen extends StatelessWidget {
         selectedItemColor: const Color(0xFFFFD369),
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
+        currentIndex: 0,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(icon: Icon(Icons.download), label: "Downloads"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: "Search",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.download),
+            label: "Downloads",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
         ],
       ),
     );
