@@ -1,57 +1,65 @@
-import '../models/movie.dart';
+import '../models/movie_model.dart';
 
 class MovieService {
-  static List<Movie> getMovies() {
-    return const [
-      Movie(
-        title: 'The Last Kingdom',
-        image: '',
-        category: 'Action • Adventure • Drama',
-        rating: 9.8,
-        duration: '2h 18m',
-        description:
-            'A warrior rises to reclaim his destiny in an epic battle.',
-      ),
-      Movie(
-        title: 'Dark Horizon',
-        image: '',
-        category: 'Sci-Fi',
-        rating: 9.4,
-        duration: '2h 05m',
-        description: 'A mysterious signal changes humanity forever.',
-      ),
-      Movie(
-        title: 'Shadow Hunter',
-        image: '',
-        category: 'Action',
-        rating: 9.2,
-        duration: '1h 58m',
-        description: 'One man stands against an entire criminal empire.',
-      ),
-      Movie(
-        title: 'Lost Island',
-        image: '',
-        category: 'Adventure',
-        rating: 8.9,
-        duration: '2h 12m',
-        description: 'Survival becomes the only rule.',
-      ),
-      Movie(
-        title: 'Galaxy War',
-        image: '',
-        category: 'Sci-Fi',
-        rating: 9.6,
-        duration: '2h 30m',
-        description: 'The greatest battle in the universe begins.',
-      ),
-      Movie(
-        title: 'Red Zone',
-        image: '',
-        category: 'Thriller',
-        rating: 8.8,
-        duration: '1h 50m',
-        description: 'Every second counts.',
-      ),
-    ];
-  }
+  static List<Movie> trendingMovies = const [
+    Movie(
+      title: "The Last Kingdom",
+      image: "",
+      category: "Action",
+      rating: 9.8,
+      duration: "2h 18m",
+    ),
+    Movie(
+      title: "John Wick",
+      image: "",
+      category: "Action",
+      rating: 9.3,
+      duration: "2h 05m",
+    ),
+    Movie(
+      title: "Avatar",
+      image: "",
+      category: "Sci-Fi",
+      rating: 8.9,
+      duration: "3h 02m",
+    ),
+    Movie(
+      title: "The Batman",
+      image: "",
+      category: "Crime",
+      rating: 8.7,
+      duration: "2h 56m",
+    ),
+    Movie(
+      title: "Interstellar",
+      image: "",
+      category: "Sci-Fi",
+      rating: 9.6,
+      duration: "2h 49m",
+    ),
+  ];
+
+  static List<Movie> continueWatching = const [
+    Movie(
+      title: "Money Heist",
+      image: "",
+      category: "Crime",
+      rating: 9.0,
+      duration: "45m",
+    ),
+    Movie(
+      title: "Breaking Bad",
+      image: "",
+      category: "Drama",
+      rating: 9.9,
+      duration: "50m",
+    ),
+    Movie(
+      title: "Dark",
+      image: "",
+      category: "Mystery",
+      rating: 9.2,
+      duration: "55m",
+    ),
+  ];
 }

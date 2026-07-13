@@ -4,7 +4,6 @@ class Movie {
   final String category;
   final double rating;
   final String duration;
-  final String description;
 
   const Movie({
     required this.title,
@@ -12,6 +11,5 @@ class Movie {
     required this.category,
     required this.rating,
     required this.duration,
-    required this.description,
   });
 }
